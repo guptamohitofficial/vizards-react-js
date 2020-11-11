@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 //import Contact from './Contact';
 //import axios from 'axios';
 
-const HeaderComp = () => {
+const PublicHeader = () => {
 
 /*
         const response = fetch("http://localhost:8000/card",
@@ -44,7 +44,7 @@ const HeaderComp = () => {
 
                     <div className="col-6 col-xl-2">
                         <div className="mb-0 site-logo">
-                            <Link to="/" style={{fontSize:"1.3em"}} className="mb-0">vizards<span className="text-primary">.</span></Link>
+                            <a href="/" style={{fontSize:"1.3em"}} className="mb-0">vizards<span className="text-primary">.</span></a>
                             
                         </div>
                                    
@@ -54,11 +54,51 @@ const HeaderComp = () => {
                         <nav className="site-navigation position-relative text-right" role="navigation">
 
                             <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                                <li>
-                                    <Link to="/login" className="nav-link">Login</Link>
-                                    <Link exact to="/contact" className="nav-link">Contact</Link>                                   
+
+                                    <li><Link to="/" className="nav-link"><b>Home</b></Link></li>
+                                            
+                                    <li><Link to="/login" className="nav-link"><b>Login</b></Link></li>
+
+                                    <li><Link to="/signup" className="nav-link"><b>Signup</b></Link></li>
+                                            
+                                    <li><Link to="/blog" className="nav-link"><b>Blog</b></Link></li>
                                     
-                                </li>
+                                    {/*<li className="has-children">
+
+                                    {
+                                        window.location.pathname !== '/'
+                                        ?(
+                                            <Link to="/" className="nav-link"><b>Home</b></Link>
+                                        ):(
+                                            <Link to="/login" className="nav-link"><b>Login</b></Link>
+                                        )
+                                    }
+
+                                        <Link to="#features-section" className="nav-link"><b>Features</b></Link>
+                                        
+                                        <ul className="dropdown">
+                                        
+                                            <li><Link to="#" className="nav-link"><b>A</b></Link></li>
+                                            <li><Link to="#" className="nav-link"><b>B</b></Link></li>
+                                        
+                                            <li className="has-children">
+                                        
+                                                <Link to="#">More Links</Link>
+                                        
+                                                <ul className="dropdown">
+                                                    <li><Link to="#"><b>Menu One</b></Link></li>
+                                                    <li><Link to="#"><b>Menu Two</b></Link></li>
+                                                    <li><Link to="#"><b>Menu Three</b></Link></li>
+                                                </ul>
+                                        
+                                            </li>
+                                        </ul>
+
+                                </li>*/}
+                                    <li><Link exact="true" to="/contact" className="nav-link"><b>Contact</b></Link></li>
+  
+                                    
+                                
 
                             </ul>
                         </nav>
@@ -80,7 +120,7 @@ const HeaderComp = () => {
   );
 }
 
-export default HeaderComp
+export default PublicHeader;
   /*
         //axios.defaults.headers.common['Authorization'] = 'Token 69b24dbed2c0eb72d636c7216ecf89aba883b012';
         axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
@@ -110,7 +150,7 @@ export default HeaderComp
                 body: JSON.stringify({ 
                     username:'mohit',
                     password:'hello' 
-                });
+                }),
             };
             const datas = fetch('http://localhost:8000/request/token', requestOptions)
                 .then(response => response.json())
