@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 //import axios from 'axios';
 
 const PublicBody = () => {
@@ -13,7 +13,7 @@ const PublicBody = () => {
                   Boost Business with <strong>vizards</strong>
                 </h1>
                 <p>
-                  <strong>vizards</strong>lets you share your business profile
+                  <strong>vizards</strong> lets you share your business profile
                   to everyone within seconds.
                 </p>
                 <a href="/login" className="btn btn-primary">
