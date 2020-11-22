@@ -27,7 +27,13 @@ class Login extends React.Component {
       .then(response => cookies.set("token", response["token"], { path: "/" }))
       .then(() => {
         super.setState({ token: cookies.get("token") });
-        window.location.href = "/";
+        var isReqUrl = cookies.get("requestedUrl");
+        if (isReqUrl) {
+          cookies.remove("requestedUrl");
+          window.location.href = isReqUrl;
+        } else {
+          window.location.href = "/";
+        }
       });
   };
   render() {

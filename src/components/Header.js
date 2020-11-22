@@ -24,13 +24,13 @@ export default class Header extends Component {
             <div className="row align-items-center">
               <div className="col-6 col-xl-2">
                 <div className="mb-0 site-logo">
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     style={{ fontSize: "1.3em" }}
                     className="mb-0 text-black"
                   >
                     vizards<span className="text-primary">.</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -41,7 +41,10 @@ export default class Header extends Component {
                 >
                   <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                     <li>
-                      <Link to={`/${this.props.data.id}`} className="nav-link">
+                      <Link
+                        to={`/${this.props.data.id}/detail`}
+                        className="nav-link"
+                      >
                         <b>
                           {this.props.data.first_name}&nbsp;
                           {this.props.data.last_name}
@@ -50,11 +53,7 @@ export default class Header extends Component {
                     </li>
 
                     <li>
-                      <Link
-                        to="/logout"
-                        onClick={this.logout}
-                        className="nav-link"
-                      >
+                      <Link to="#" onClick={this.logout} className="nav-link">
                         <b>Logout</b>
                       </Link>
                     </li>

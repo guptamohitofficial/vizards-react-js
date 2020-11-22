@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { cookies } from "../cc/code.js";
+//import { cookies } from "../cc/code.js";
 
 export default class CheckToken extends Component {
-  componentDidMount() {
+  /*componentDidMount() {
     const requestOptions = {
       method: "POST",
       headers: {
@@ -22,7 +22,7 @@ export default class CheckToken extends Component {
           window.alert("please clear all cookies, and relogin");
         }
       });
-  }
+  }*/
 
   render() {
     return (
@@ -38,13 +38,6 @@ export default class CheckToken extends Component {
               <div className="spinner-border text-primary" role="status">
                 <span className="sr-only"></span>
               </div>
-              <span
-                className="text-center text-primary"
-                style={{ fontSize: "2em" }}
-              >
-                {" "}
-                Verifying User...
-              </span>
             </div>
           </div>
         </div>

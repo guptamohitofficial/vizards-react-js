@@ -8,8 +8,9 @@ import Contact from "./Contact";
 import Login from "./Login";
 import Signup from "./Signup";
 import Blog from "./Blog";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
+//import NotFound from "./Error";
 
 export default class FullPage extends Component {
   constructor(props) {
@@ -49,6 +50,20 @@ export default class FullPage extends Component {
       showComponent = false;
     }
 
+    if (
+      window.location.href !== "http://localhost:3000" &&
+      window.location.href !== "http://localhost:3000/" &&
+      window.location.href !== "http://localhost:3000/login" &&
+      window.location.href !== "http://localhost:3000/signup" &&
+      window.location.href !== "http://localhost:3000/about" &&
+      window.location.href !== "http://localhost:3000/contact" &&
+      window.location.href !== "http://localhost:3000/blog" &&
+      !cookies.get("token")
+    ) {
+      cookies.set("requestedUrl", window.location.href, { path: "/" });
+      window.location.href = "/login";
+    }
+
     return (
       <div>
         {showComponent !== false ? (
@@ -57,14 +72,18 @@ export default class FullPage extends Component {
           <div>
             <PublicHeader />
             <Route exact={true} path="/" component={PublicBody} />
-            <Route exact={true} path="/blog" component={Blog} />
             <Route exact={true} path="/login" component={Login} />
             <Route exact={true} path="/signup" component={Signup} />
-            <Route exact={true} path="/contact" component={Contact} />
-            <PublicFooter />
           </div>
         )}
+        <Switch>
+          <Route exact={true} path="/contact" component={Contact} />
+          <Route exact={true} path="/blog" component={Blog} />
+        </Switch>
+        <PublicFooter />
       </div>
     );
   }
 }
+
+//<Route component={NotFound} />

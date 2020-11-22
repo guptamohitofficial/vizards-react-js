@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Body from "./Body";
-import { HomeBodyLoader, HeaderLoader } from "./Loaders";
+import { HeaderLoader } from "./Loaders";
+import { Route, Switch } from "react-router-dom";
 import { cookies } from "../cc/code.js";
+import UserProfile, { UserProfileEdit } from "./UserProfile";
 
 export default class Home extends Component {
   constructor(props) {
@@ -28,25 +30,28 @@ export default class Home extends Component {
       .then(response => {
         this.setState({ userdetail: response, headLoaded: true });
       });
-    fetch("http://localhost:8000/get-schedule", requestOptions)
-      .then(response => response.json())
-      .then(response => {
-        this.setState({ scheduledetail: response, bodyLoaded: true });
-      });
   }
   render() {
     var varHeader = <HeaderLoader />;
-    var varBody = <HomeBodyLoader />;
     if (this.state.headLoaded) {
       varHeader = <Header data={this.state.userdetail} />;
-    }
-    if (this.state.bodyLoaded) {
-      varBody = <Body data={this.state.scheduledetail} />;
     }
     return (
       <div>
         {varHeader}
-        {varBody}
+        <Switch>
+          <Route
+            exact={true}
+            path="/:id/detail"
+            component={() => <UserProfile data={this.state.userdetail} />}
+          />
+          <Route
+            exact={true}
+            path="/:id/edit"
+            component={() => <UserProfileEdit data={this.state.userdetail} />}
+          />
+          <Route path="/" component={Body} />
+        </Switch>
       </div>
     );
   }
